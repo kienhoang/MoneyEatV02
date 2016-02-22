@@ -1,0 +1,70 @@
+﻿Build started 14/11/2015 13:13:02.
+     1>Project "D:\_Project_Program\QT\MoneyEatV02\MoneyEatV02.vcxproj" on node 2 (build target(s)).
+     1>PrepareForBuild:
+         Creating directory "release\".
+       InitializeBuildStatus:
+         Creating "Win32\Release\MoneyEatV02.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       CustomBuild:
+         Moc'ing databasepath.h...
+         Moc'ing editchilditem.h...
+         Moc'ing editdate.h...
+         Moc'ing log.h...
+         Moc'ing money.h...
+         Moc'ing mw.h...
+         Uic'ing databasepath.ui...
+         Uic'ing editchilditem.ui...
+         Uic'ing editdate.ui...
+         Uic'ing log.ui...
+         Uic'ing money.ui...
+         Uic'ing mw.ui...
+         Rcc'ing res.qrc...
+       ClCompile:
+         D:\ProgramSetup\VS10\VC\bin\CL.exe /c /I. /I..\..\..\ProgramSetup\QtStatic\include /I..\..\..\ProgramSetup\QtStatic\include\QtWidgets /I..\..\..\ProgramSetup\QtStatic\include\QtGui /I..\..\..\ProgramSetup\QtStatic\include\QtANGLE /I..\..\..\ProgramSetup\QtStatic\include\QtSql /I..\..\..\ProgramSetup\QtStatic\include\QtCore /Irelease /I. /I"..\..\..\ProgramSetup\QtStatic\mkspecs\win32-msvc2010" /I.\GeneratedFiles /Zi /nologo /W3 /WX- /O2 /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_NO_DEBUG /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_SQL_LIB /D QT_CORE_LIB /D NDEBUG /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Release\\" /Fd"Win32\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt databasepath.cpp editchilditem.cpp editdate.cpp log.cpp main.cpp money.cpp moneyeatv02_plugin_import.cpp mw.cpp Release\moc_databasepath.cpp Release\moc_editchilditem.cpp Release\moc_editdate.cpp Release\moc_log.cpp Release\moc_money.cpp Release\moc_mw.cpp -w34100 -w34189 -w44996 
+         databasepath.cpp
+         editchilditem.cpp
+         editdate.cpp
+         log.cpp
+         main.cpp
+         money.cpp
+         moneyeatv02_plugin_import.cpp
+         mw.cpp
+         moc_databasepath.cpp
+         moc_editchilditem.cpp
+         moc_editdate.cpp
+         moc_log.cpp
+         moc_money.cpp
+         moc_mw.cpp
+         Generating Code...
+         D:\ProgramSetup\VS10\VC\bin\CL.exe /c /I. /I..\..\..\ProgramSetup\QtStatic\include /I..\..\..\ProgramSetup\QtStatic\include\QtWidgets /I..\..\..\ProgramSetup\QtStatic\include\QtGui /I..\..\..\ProgramSetup\QtStatic\include\QtANGLE /I..\..\..\ProgramSetup\QtStatic\include\QtSql /I..\..\..\ProgramSetup\QtStatic\include\QtCore /Irelease /I. /I"..\..\..\ProgramSetup\QtStatic\mkspecs\win32-msvc2010" /I.\GeneratedFiles /Zi /nologo /W3 /WX- /O2 /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_NO_DEBUG /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_SQL_LIB /D QT_CORE_LIB /D NDEBUG /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Release\\" /Fd"Win32\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GeneratedFiles\qrc_res.cpp -w34100 -w34189 -w44996 
+         qrc_res.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _WINDOWS /D UNICODE /D WIN32 /D QT_NO_DEBUG /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_SQL_LIB /D QT_CORE_LIB /l"0x0409" /nologo /fo"Win32\Release\MoneyEatV02_resource.res" D:\_Project_Program\QT\MoneyEatV02\MoneyEatV02_resource.rc 
+       Link:
+         D:\ProgramSetup\VS10\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"release\\MoneyEatV02.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:D:\ProgramSetup\QtStatic\lib /LIBPATH:D:/ProgramSetup/QtStatic/lib /LIBPATH:D:\ProgramSetup\QtStatic\lib /LIBPATH:D:\ProgramSetup\QtStatic\plugins\platforms /LIBPATH:D:\ProgramSetup\QtStatic\plugins\imageformats D:\ProgramSetup\QtStatic\lib\qtmain.lib D:\ProgramSetup\QtStatic\lib\Qt5Widgets.lib D:\ProgramSetup\QtStatic\lib\Qt5Gui.lib D:\ProgramSetup\QtStatic\lib\Qt5Sql.lib D:\ProgramSetup\QtStatic\lib\Qt5Core.lib D:\ProgramSetup\QtStatic\plugins\platforms\qwindows.lib winspool.lib shlwapi.lib rpcrt4.lib D:/ProgramSetup/QtStatic/lib\Qt5PlatformSupport.lib D:/ProgramSetup/QtStatic/lib\qtfreetype.lib D:\ProgramSetup\QtStatic\plugins\imageformats\qdds.lib D:\ProgramSetup\QtStatic\plugins\imageformats\qicns.lib D:\ProgramSetup\QtStatic\plugins\imageformats\qico.lib D:\ProgramSetup\QtStatic\plugins\imageformats\qjp2.lib D:\ProgramSetup\QtStatic\plugins\imageformats\qmng.lib D:\ProgramSetup\QtStatic\plugins\imageformats\qtga.lib D:\ProgramSetup\QtStatic\plugins\imageformats\qtiff.lib D:\ProgramSetup\QtStatic\plugins\imageformats\qwbmp.lib D:\ProgramSetup\QtStatic\plugins\imageformats\qwebp.lib D:/ProgramSetup/QtStatic/lib\Qt5Gui.lib comdlg32.lib oleaut32.lib imm32.lib winmm.lib glu32.lib opengl32.lib gdi32.lib D:/ProgramSetup/QtStatic/lib\qtharfbuzzng.lib D:/ProgramSetup/QtStatic/lib\Qt5Core.lib kernel32.lib user32.lib shell32.lib uuid.lib ole32.lib advapi32.lib ws2_32.lib mpr.lib D:/ProgramSetup/QtStatic/lib\qtpcre.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Win32\Release\MoneyEatV02.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"D:\_Project_Program\QT\MoneyEatV02\release\MoneyEatV02.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X86 Win32\Release\MoneyEatV02_resource.res
+         Win32\Release\databasepath.obj
+         Win32\Release\editchilditem.obj
+         Win32\Release\editdate.obj
+         Win32\Release\qrc_res.obj
+         Win32\Release\log.obj
+         Win32\Release\main.obj
+         Win32\Release\money.obj
+         Win32\Release\moneyeatv02_plugin_import.obj
+         Win32\Release\mw.obj
+         Win32\Release\moc_databasepath.obj
+         Win32\Release\moc_editchilditem.obj
+         Win32\Release\moc_editdate.obj
+         Win32\Release\moc_log.obj
+         Win32\Release\moc_money.obj
+         Win32\Release\moc_mw.obj "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" 
+            Creating library release\\MoneyEatV02.lib and object release\\MoneyEatV02.exp
+         MoneyEatV02.vcxproj -> D:\_Project_Program\QT\MoneyEatV02\release\MoneyEatV02.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"release\\MoneyEatV02.exe;#1" /manifest Win32\Release\MoneyEatV02.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Win32\Release\MoneyEatV02.unsuccessfulbuild".
+         Touching "Win32\Release\MoneyEatV02.lastbuildstate".
+     1>Done Building Project "D:\_Project_Program\QT\MoneyEatV02\MoneyEatV02.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:45.34
