@@ -45,18 +45,21 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{b58be41b-5899-49c4-937f-10c9bd58edd3}</UniqueIdentifier>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{f41c64f3-9ec2-45f6-950e-0f5eff7e07c3}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{b2b42273-e699-48d0-9910-37b39d3469a9}</UniqueIdentifier>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{6fe34ca1-3d1e-4355-9016-75ca84d6b2e8}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="adduser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="databasepath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,47 +81,56 @@
     <ClCompile Include="mw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_databasepath.cpp">
+    <ClCompile Include="Debug\moc_adduser.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_adduser.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_databasepath.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_editchilditem.cpp">
+    <ClCompile Include="Release\moc_databasepath.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_editchilditem.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_editdate.cpp">
+    <ClCompile Include="Release\moc_editchilditem.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_editdate.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_log.cpp">
+    <ClCompile Include="Release\moc_editdate.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_log.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_money.cpp">
+    <ClCompile Include="Release\moc_log.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_money.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_mw.cpp">
+    <ClCompile Include="Release\moc_money.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_mw.cpp">
       <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_mw.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_res.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="adduser.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="databasepath.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -139,6 +151,9 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="adduser.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="databasepath.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
@@ -177,11 +192,17 @@
     <CustomBuild Include="res.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <None Include="splash\splash.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="D:\_Project_Program\QT\MoneyEatV02\MoneyEatV02_resource.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_adduser.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_databasepath.h">
       <Filter>Generated Files</Filter>
     </ClInclude>

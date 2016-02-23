@@ -18,21 +18,24 @@ SOURCES += main.cpp\
     editchilditem.cpp \
     log.cpp \
     money.cpp \
-    databasepath.cpp
+    databasepath.cpp \
+    adduser.cpp
 
 HEADERS  += mw.h \
     editdate.h \
     editchilditem.h \
     log.h \
     money.h \
-    databasepath.h
+    databasepath.h \
+    adduser.h
 
 FORMS    += mw.ui \
     editdate.ui \
     editchilditem.ui \
     log.ui \
     money.ui \
-    databasepath.ui
+    databasepath.ui \
+    adduser.ui
 
 CONFIG   += c++11
 

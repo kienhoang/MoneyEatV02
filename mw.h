@@ -11,10 +11,15 @@
 #include "log.h"
 #include <QLabel>
 
+
+/*
 #ifdef _DEBUG
 #undef _DEBUG
 #endif
 
+*/
+
+#define _DEBUG
 #define VERSION "1.0.3"
 
 namespace Ui {
@@ -53,6 +58,7 @@ public:
     unsigned int totalMoney();
     void swapItem(QTreeWidgetItem *item1, QTreeWidgetItem *item2);
     void sortTreeWidget(QTreeWidget * treeWidget);
+    int addUser();
 public slots:
     void calendarChanged();
     void dateChanged();
@@ -82,6 +88,12 @@ private slots:
 
     void on_actionAbout_triggered();
 
+    void on_btnLoad_clicked();
+
+    void on_btnDescription_clicked();
+
+    void on_actionAdd_Account_triggered();
+
 private:
     Ui::MW *ui;
     QSqlDatabase db;
@@ -90,6 +102,7 @@ private:
     QString sqry;
     Log * log;
     QLabel * statusLabel;
+    QString crtUser;
 };
 
 #endif // MW_H

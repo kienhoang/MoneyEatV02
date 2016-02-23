@@ -8,6 +8,7 @@
 #include "editchilditem.h"
 #include "money.h"
 #include "databasepath.h"
+#include "adduser.h"
 
 MW::MW(QWidget *parent) :
     QMainWindow(parent),
@@ -22,14 +23,16 @@ MW::MW(QWidget *parent) :
         this->dbPath = "default.db";
         QMessageBox::information(this,"Info","Database not set. Connect to default.db");
     }
-    connectDatabase();
     connectEvent();
-    importFromDB();
-
     log = new Log(this);
+
+    connectDatabase();
+    clearTreeLog();
+    importFromDB();
     loadEvent();
     ui->sbMoney->setSingleStep(1000);
     sortTreeWidget(ui->moneyList);
+    this->setWindowTitle("MoneyEat - Current User: " + this->crtUser);
     //ui->moneyList->sortByColumn(0,Qt::DescendingOrder);
     //ui->moneyList->setSortingEnabled(true);
     connect(ui->moneyList,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(onDoubleClick()));
@@ -39,6 +42,7 @@ MW::MW(QWidget *parent) :
 
 MW::~MW()
 {
+    qDebug() << "Destructor";
     delete qry;
     delete log;
     delete ui;
@@ -82,9 +86,8 @@ void MW::connectDatabase(){
             this->db.setDatabaseName(this->dbPath);
             delete mDatabasePath;
         }else{
-            //this->close();
+            this->close();
 			exit(0);
-
         }
     }
 //    if(this->db.open()){
@@ -94,37 +97,87 @@ void MW::connectDatabase(){
         statusLabel->setText("Connected to " + this->dbPath);
         qry = new QSqlQuery(db);
 
-        // Create table Money : DATE|EVENT|MONEY
-        sqry = "CREATE TABLE IF NOT EXISTS money (date VARCHAR NOT NULL, event VARCHAR, money INTEGER NOT NULL, id INTEGER PRIMARY KEY NOT NULL);";
-        if(qry->exec(sqry)){
+        // Create table User :
+        sqry = "CREATE TABLE IF NOT EXISTS user (usr VARCHAR PRIMARY KEY NOT NULL, des VARCHAR);";
+        if (qry->exec(sqry)){
 #ifdef _DEBUG
-            qDebug() << "Success for create table money";
+            qDebug() << "Create table user";
 #endif
-        }else{
-#ifdef _DEBUG
-            qDebug() << "Failed for create or ignore table money";
-#endif
-            QMessageBox::critical(this,"ERROR","Failed for create or ignore table money");
         }
 
-        //Create table History: DATE|EVENT
-        sqry = "CREATE TABLE IF NOT EXISTS history (date VARCHAR NOT NULL, event VARCHAR);";
-        if(qry->exec(sqry)){
-#ifdef _DEBUG
-            qDebug() << "Success for create table history";
-#endif
+        // Get User froom table user
+        sqry = "SELECT * FROM user;";
+        QStringList usrList;
+        if (qry->exec(sqry)){
+            while (qry->next()){
+                usrList.push_back(qry->value(0).toString());
+            }
         }else{
-#ifdef _DEBUG
-            qDebug() << "Failed for create or ignore table history";
-#endif
-            QMessageBox::critical(this,"ERROR","Failed for create or ignore table history");
+            qDebug() << "ERROR read data from table user.";
         }
-//    }else{
-        //Do Somethings if not Opened
-        //qDebug() << "Failed to Connect Database, Path: " + this->dbPath;
-        //QMessageBox::critical(this,"ERROR","Failed to Connect Database, Path: " + this->dbPath);
-//    }
+/* =====> MOVE TO ADDUSER.CPP
+        for (int i = 0; i < usrList.count(); i++){
+            // Create table Money : DATE|EVENT|MONEY|ID
 
+            sqry = "CREATE TABLE IF NOT EXISTS money_" + usrList.at(i) +
+                    " (date VARCHAR NOT NULL, event VARCHAR, money INTEGER NOT NULL, id INTEGER PRIMARY KEY NOT NULL);";
+            if(qry->exec(sqry)){
+    #ifdef _DEBUG
+                qDebug() << "Success for create table money";
+    #endif
+            }else{
+    #ifdef _DEBUG
+                qDebug() << "Failed for create or ignore table money";
+    #endif
+                QMessageBox::critical(this,"ERROR","Failed for create or ignore table money");
+            }
+
+            //Create table History: DATE|EVENT
+            sqry = "CREATE TABLE IF NOT EXISTS history_" + usrList.at(i) +
+                    " (date VARCHAR NOT NULL, event VARCHAR);";
+            if(qry->exec(sqry)){
+    #ifdef _DEBUG
+                qDebug() << "Success for create table history";
+    #endif
+            }else{
+    #ifdef _DEBUG
+                qDebug() << "Failed for create or ignore table history";
+    #endif
+                QMessageBox::critical(this,"ERROR","Failed for create or ignore table history");
+            }
+    //    }else{
+            //Do Somethings if not Opened
+            //qDebug() << "Failed to Connect Database, Path: " + this->dbPath;
+            //QMessageBox::critical(this,"ERROR","Failed to Connect Database, Path: " + this->dbPath);
+    //    }
+    }
+        */
+
+    if (usrList.count() == 0){
+        //QMessageBox::information(this,"Info","You must to create a user now.");
+        QMessageBox::warning(this,"WARNING","You must to create a user now. Goto Account -> Add Account");
+        this->setWindowTitle("MoneyEat - WARNNING: NO USER EXISTS. GOTO Account -> Add Account");
+        ui->btnAddItem->setEnabled(false);
+        ui->comUser->setEnabled(false);
+        ui->btnLoad->setEnabled(false);
+        ui->btnDescription->setEnabled(false);
+        ui->btnCalc->setEnabled(false);
+        ui->btnLog->setEnabled(false);
+        ui->leItem->setEnabled(false);
+        ui->sbMoney->setEnabled(false);
+    }else {
+        ui->btnAddItem->setEnabled(true);
+        ui->comUser->setEnabled(true);
+        ui->btnLoad->setEnabled(true);
+        ui->btnDescription->setEnabled(true);
+        ui->btnCalc->setEnabled(true);
+        ui->btnLog->setEnabled(true);
+        ui->leItem->setEnabled(true);
+        ui->sbMoney->setEnabled(true);
+        ui->comUser->clear();
+        ui->comUser->addItems(usrList);
+        this->crtUser = ui->comUser->currentText();
+    }
 }
 
 //Close database
@@ -189,7 +242,7 @@ void MW::closeEvent(QCloseEvent *){
 void MW::createEvent(QString event){
     //Do somethings
     QString sdate = QDateTime::currentDateTime().toString("dd/MM/yyyy HH:mm:ss");
-    sqry = "INSERT INTO history VALUES('" + sdate + "','" + event + "');" ;
+    sqry = "INSERT INTO history_" + this->crtUser + " VALUES('" + sdate + "','" + event + "');" ;
     if(qry->exec(sqry)){
 #ifdef _DEBUG
         qDebug() << "Success to AddEvent";
@@ -206,15 +259,14 @@ void MW::createEvent(QString event){
   * Load Event
   * */
 void MW::loadEvent(){
-    sqry = "SELECT * FROM history;";
+    log->clear();
+    sqry = "SELECT * FROM history_" + this->crtUser + ";";
     if(qry->exec(sqry)){
         while(qry->next()){
             log->addEvent(qry->value(0).toString() + " | "+ qry->value(1).toString());
         }
     }
 }
-
-
 
 /**
  * Add a Event to Money Tree
@@ -257,7 +309,7 @@ QTreeWidgetItem * MW::addEventToTree(QDate &date, QString &event,
 bool MW::addEventToDB(QDate &date, QString &event, unsigned int money, QString &id){
     QString sdate = date.toString("dd/MM/yyyy");
     QString smoney = QString::number(money);
-    sqry = "INSERT INTO money VALUES('" + sdate + "','" + event + "'," + smoney + "," + id + ");";
+    sqry = "INSERT INTO money_" + this->crtUser + " VALUES('" + sdate + "','" + event + "'," + smoney + "," + id + ");";
     if(qry->exec(sqry)){
 #ifdef _DEBUG
         qDebug() << "Success Add value to Database";
@@ -348,7 +400,7 @@ void MW::importFromDB(){
     QString event;
     unsigned int money;
     QString id;
-    sqry = "SELECT * FROM money;";
+    sqry = "SELECT * FROM money_" + this->crtUser + ";";
     if(qry->exec(sqry)){
         while(qry->next()){
             date = QDate::fromString(qry->value(0).toString(),"dd/MM/yyyy");
@@ -357,6 +409,7 @@ void MW::importFromDB(){
             id = qry->value(3).toString();
             addEventToTree(date,event,money,id);
         }
+        ui->moneyList->collapseAll();
     }
     calcAllTop();
 }
@@ -367,6 +420,12 @@ void MW::importFromDB(){
 void MW::reLoadTree(){
     ui->moneyList->clear();
     importFromDB();
+    ui->moneyList->collapseAll();
+    if (ui->moneyList->currentItem()->parent()){
+        ui->moneyList->currentItem()->parent()->setExpanded(true);
+    }else{
+        ui->moneyList->currentItem()->setExpanded(true);
+    }
 }
 
 /*Delete a Item*/
@@ -375,7 +434,7 @@ void MW::deleteItem(QTreeWidgetItem * item){
                              QMessageBox::Ok|QMessageBox::Cancel)==QMessageBox::Ok){
         if(!item->parent()){
             QString date = item->data(0,0).toString();
-            sqry = "DELETE FROM money WHERE date='" + date + "';";
+            sqry = "DELETE FROM money_" + this->crtUser + " WHERE date='" + date + "';";
             if(qry->exec(sqry)){
                 createEvent("Deleted: " + date);
                 int count = item->childCount();
@@ -398,7 +457,7 @@ void MW::deleteItem(QTreeWidgetItem * item){
         }else{
             auto parent = item->parent();
             QString id = item->data(2,0).toString();
-            sqry = "DELETE FROM money WHERE id=" + id + ";";
+            sqry = "DELETE FROM money_" + this->crtUser + " WHERE id=" + id + ";";
             if(qry->exec(sqry)){
                 createEvent("Deleted : "+item->parent()->data(0,0).toString() + " "
                             + item->data(0,0).toString() + " | "
@@ -432,12 +491,11 @@ void MW::editItem(QTreeWidgetItem *item){
         QDate odate = QDate::fromString(item->data(0,0).toString(),"dd/MM/yyyy");
         EditDate mED(this);
         mED.setDate(odate);
-        mED.setModal(true);
         mED.exec();
         if(mED.Update()){
             QDate date = mED.getDate();
             item->setText(0,date.toString("dd/MM/yyyy"));
-            sqry = "UPDATE money SET date='" + date.toString("dd/MM/yyyy") +
+            sqry = "UPDATE money_" + this->crtUser + " SET date='" + date.toString("dd/MM/yyyy") +
                 "' WHERE date='" + odate.toString("dd/MM/yyyy") + "';";
             if(qry->exec(sqry)){
                 createEvent("Edit date: "+ odate.toString("dd/MM/yyyy") 
@@ -465,7 +523,7 @@ void MW::editItem(QTreeWidgetItem *item){
             QString nMoney = mED.getMoney();
             item->setText(0,nItem);
             item->setText(1,nMoney);
-            sqry = "UPDATE money SET event='" + mED.getItem() + 
+            sqry = "UPDATE money_" + this->crtUser + " SET event='" + mED.getItem() +
 				"', money=" + mED.getMoney() + " WHERE id=" + item->data(2,0).toString() + ";";
             if(qry->exec(sqry)){
 #ifdef _DEBUG
@@ -485,7 +543,7 @@ void MW::editItem(QTreeWidgetItem *item){
 }
 
 unsigned int MW::totalMoney(){
-    sqry = "SELECT * FROM money;";
+    sqry = "SELECT * FROM money_" + this->crtUser +";";
     unsigned int total = 0;
     if(qry->exec(sqry)){
         while(qry->next()){
@@ -560,6 +618,27 @@ void MW::sortTreeWidget(QTreeWidget *treeWidget){
                 swapItem(item1,item2);
             }
         }
+    }
+}
+
+int MW::addUser()
+{
+    closeDatabase();
+    Adduser mAdduser(this);
+    mAdduser.setDBpath(this->dbPath);
+    mAdduser.exec();
+    QString usr_ = mAdduser.getUsr();
+    if (usr_ != ""){
+        ui->comUser->addItem(usr_);
+        this->crtUser = usr_;
+    }
+    connectDatabase();
+    clearTreeLog();
+    importFromDB();
+    if (usr_==""){
+        return -1;
+    }else{
+        return 0;
     }
 }
 
@@ -674,4 +753,30 @@ void MW::on_actionAbout_triggered()
 {
     QMessageBox::information(this,"Version info",tr("Money Eat v%0").arg(VERSION));
 
+}
+
+void MW::on_btnLoad_clicked()
+{
+    this->crtUser = ui->comUser->currentText();
+    clearTreeLog();
+    importFromDB();
+    loadEvent();
+    this->setWindowTitle("MoneyEat - Current User: " + this->crtUser);
+    sortTreeWidget(ui->moneyList);
+    qDebug() << "Current user: " + this->crtUser;
+}
+
+void MW::on_btnDescription_clicked()
+{
+    sqry = "SELECT * FROM user WHERE usr='" + this->crtUser + "';";
+    if (qry->exec(sqry)){
+        while (qry->next()){
+            QMessageBox::information(this,"Description",qry->value(1).toString());
+        }
+    }
+}
+
+void MW::on_actionAdd_Account_triggered()
+{
+    addUser();
 }

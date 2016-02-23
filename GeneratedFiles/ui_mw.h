@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCalendarWidget>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -39,6 +40,8 @@ public:
     QAction *actionExit;
     QAction *actionConnect_relative_database;
     QAction *actionAbout;
+    QAction *actionAdd_Account;
+    QAction *actionRemove_Account;
     QWidget *centralWidget;
     QCalendarWidget *calendar;
     QTreeWidget *moneyList;
@@ -60,16 +63,21 @@ public:
     QLineEdit *leItem;
     QSpinBox *sbMoney;
     QPushButton *btnSort;
+    QComboBox *comUser;
+    QLabel *lbUser;
+    QPushButton *btnLoad;
+    QPushButton *btnDescription;
     QMenuBar *menuBar;
     QMenu *menuOption;
     QMenu *menuAbout;
+    QMenu *menuAccount;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MW)
     {
         if (MW->objectName().isEmpty())
             MW->setObjectName(QStringLiteral("MW"));
-        MW->resize(612, 398);
+        MW->resize(612, 413);
         actionConnect_database = new QAction(MW);
         actionConnect_database->setObjectName(QStringLiteral("actionConnect_database"));
         QIcon icon;
@@ -92,32 +100,36 @@ public:
         actionConnect_relative_database->setIcon(icon3);
         actionAbout = new QAction(MW);
         actionAbout->setObjectName(QStringLiteral("actionAbout"));
+        actionAdd_Account = new QAction(MW);
+        actionAdd_Account->setObjectName(QStringLiteral("actionAdd_Account"));
+        actionRemove_Account = new QAction(MW);
+        actionRemove_Account->setObjectName(QStringLiteral("actionRemove_Account"));
         centralWidget = new QWidget(MW);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         calendar = new QCalendarWidget(centralWidget);
         calendar->setObjectName(QStringLiteral("calendar"));
-        calendar->setGeometry(QRect(11, 10, 296, 191));
+        calendar->setGeometry(QRect(17, 40, 296, 191));
         moneyList = new QTreeWidget(centralWidget);
         moneyList->setObjectName(QStringLiteral("moneyList"));
-        moneyList->setGeometry(QRect(320, 10, 281, 291));
+        moneyList->setGeometry(QRect(326, 40, 281, 291));
         btnAddItem = new QPushButton(centralWidget);
         btnAddItem->setObjectName(QStringLiteral("btnAddItem"));
-        btnAddItem->setGeometry(QRect(10, 300, 101, 31));
+        btnAddItem->setGeometry(QRect(16, 330, 101, 31));
         btnDelete = new QPushButton(centralWidget);
         btnDelete->setObjectName(QStringLiteral("btnDelete"));
-        btnDelete->setGeometry(QRect(510, 310, 91, 23));
+        btnDelete->setGeometry(QRect(516, 340, 91, 23));
         btnEdit = new QPushButton(centralWidget);
         btnEdit->setObjectName(QStringLiteral("btnEdit"));
-        btnEdit->setGeometry(QRect(410, 310, 91, 23));
+        btnEdit->setGeometry(QRect(416, 340, 91, 23));
         btnLog = new QPushButton(centralWidget);
         btnLog->setObjectName(QStringLiteral("btnLog"));
-        btnLog->setGeometry(QRect(230, 300, 81, 31));
+        btnLog->setGeometry(QRect(236, 330, 81, 31));
         btnCalc = new QPushButton(centralWidget);
         btnCalc->setObjectName(QStringLiteral("btnCalc"));
-        btnCalc->setGeometry(QRect(120, 300, 101, 31));
+        btnCalc->setGeometry(QRect(126, 330, 101, 31));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(13, 210, 291, 81));
+        layoutWidget->setGeometry(QRect(19, 240, 291, 81));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -180,7 +192,19 @@ public:
 
         btnSort = new QPushButton(centralWidget);
         btnSort->setObjectName(QStringLiteral("btnSort"));
-        btnSort->setGeometry(QRect(324, 310, 81, 23));
+        btnSort->setGeometry(QRect(330, 340, 81, 23));
+        comUser = new QComboBox(centralWidget);
+        comUser->setObjectName(QStringLiteral("comUser"));
+        comUser->setGeometry(QRect(57, 12, 161, 20));
+        lbUser = new QLabel(centralWidget);
+        lbUser->setObjectName(QStringLiteral("lbUser"));
+        lbUser->setGeometry(QRect(21, 11, 22, 16));
+        btnLoad = new QPushButton(centralWidget);
+        btnLoad->setObjectName(QStringLiteral("btnLoad"));
+        btnLoad->setGeometry(QRect(228, 11, 81, 23));
+        btnDescription = new QPushButton(centralWidget);
+        btnDescription->setObjectName(QStringLiteral("btnDescription"));
+        btnDescription->setGeometry(QRect(320, 10, 75, 23));
         MW->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MW);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -189,6 +213,8 @@ public:
         menuOption->setObjectName(QStringLiteral("menuOption"));
         menuAbout = new QMenu(menuBar);
         menuAbout->setObjectName(QStringLiteral("menuAbout"));
+        menuAccount = new QMenu(menuBar);
+        menuAccount->setObjectName(QStringLiteral("menuAccount"));
         MW->setMenuBar(menuBar);
         statusBar = new QStatusBar(MW);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -203,6 +229,7 @@ public:
         QWidget::setTabOrder(calendar, moneyList);
 
         menuBar->addAction(menuOption->menuAction());
+        menuBar->addAction(menuAccount->menuAction());
         menuBar->addAction(menuAbout->menuAction());
         menuOption->addAction(actionNew_database);
         menuOption->addAction(actionConnect_database);
@@ -211,6 +238,8 @@ public:
         menuOption->addSeparator();
         menuOption->addAction(actionExit);
         menuAbout->addAction(actionAbout);
+        menuAccount->addAction(actionAdd_Account);
+        menuAccount->addAction(actionRemove_Account);
 
         retranslateUi(MW);
 
@@ -228,6 +257,8 @@ public:
         actionConnect_relative_database->setText(QApplication::translate("MW", "C&onnect relative database", 0));
         actionConnect_relative_database->setShortcut(QApplication::translate("MW", "F12", 0));
         actionAbout->setText(QApplication::translate("MW", "About", 0));
+        actionAdd_Account->setText(QApplication::translate("MW", "Add Account", 0));
+        actionRemove_Account->setText(QApplication::translate("MW", "Remove Account", 0));
         QTreeWidgetItem *___qtreewidgetitem = moneyList->headerItem();
         ___qtreewidgetitem->setText(2, QApplication::translate("MW", "ID", 0));
         ___qtreewidgetitem->setText(1, QApplication::translate("MW", "Total", 0));
@@ -242,8 +273,12 @@ public:
         lbMoney->setText(QApplication::translate("MW", "Money", 0));
         btnToday->setText(QApplication::translate("MW", "Go Today", 0));
         btnSort->setText(QApplication::translate("MW", "Sort By Date", 0));
+        lbUser->setText(QApplication::translate("MW", "User", 0));
+        btnLoad->setText(QApplication::translate("MW", "Load", 0));
+        btnDescription->setText(QApplication::translate("MW", "Description", 0));
         menuOption->setTitle(QApplication::translate("MW", "Option", 0));
         menuAbout->setTitle(QApplication::translate("MW", "About", 0));
+        menuAccount->setTitle(QApplication::translate("MW", "Account", 0));
     } // retranslateUi
 
 };

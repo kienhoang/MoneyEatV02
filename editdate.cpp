@@ -11,6 +11,7 @@ EditDate::EditDate(QWidget *parent) :
     this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     connect(ui->calendarWidget,SIGNAL(selectionChanged()),this,SLOT(calendarChanged()));
     connect(ui->date,SIGNAL(dateChanged(QDate)),this,SLOT(_dateChanged()));
+    this->isUpdate = false;
 }
 
 EditDate::~EditDate()

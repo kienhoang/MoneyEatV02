@@ -1,46 +1,40 @@
-﻿Build started 24/01/2016 13:05:03.
-     1>Project "D:\_Project_Program\QT\MoneyEatV02\MoneyEatV02.vcxproj" on node 2 (build target(s)).
-     1>InitializeBuildStatus:
-         Creating "Win32\Debug\MoneyEatV02.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       CustomBuild:
-         All outputs are up-to-date.
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(151,5): warning MSB8015: Forcing a rebuild of all source files due to the contents of "D:\_Project_Program\QT\MoneyEatV02\Win32\Debug\custombuild.command.1.tlog" being invalid.
+﻿Build started 23/02/2016 12:34:51.
+     1>Project "D:\_Project_Program\QT\MoneyEatV02\MoneyEatV02.vcxproj" on node 2 (Build target(s)).
+     1>CustomBuild:
+         Moc'ing adduser.h...
          Moc'ing databasepath.h...
          Moc'ing editchilditem.h...
          Moc'ing editdate.h...
          Moc'ing log.h...
          Moc'ing money.h...
          Moc'ing mw.h...
-         Uic'ing databasepath.ui...
-         Uic'ing editchilditem.ui...
-         Uic'ing editdate.ui...
-         Uic'ing log.ui...
-         Uic'ing money.ui...
-         Uic'ing mw.ui...
-         Rcc'ing res.qrc...
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(151,5): warning MSB8015: Forcing a rebuild of all source files due to the contents of "D:\_Project_Program\QT\MoneyEatV02\Win32\Debug\custombuild.command.1.tlog" being invalid.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_adduser.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_adduser.cpp, Release\moc_adduser.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_databasepath.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_databasepath.cpp, Release\moc_databasepath.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_editchilditem.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_editchilditem.cpp, Release\moc_editchilditem.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_editdate.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_editdate.cpp, Release\moc_editdate.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_log.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_log.cpp, Release\moc_log.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_money.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_money.cpp, Release\moc_money.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_mw.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_mw.cpp, Release\moc_mw.cpp.
        ClCompile:
-         D:\ProgramSetup\VS10\VC\bin\CL.exe /c /I. /I..\..\..\programsetup\qtvs\5.5\msvc2010\include /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtWidgets /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtGui /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtANGLE /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtSql /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtCore /Idebug /I. /I"..\..\..\programsetup\qtvs\5.5\msvc2010\mkspecs\win32-msvc2010" /I.\GeneratedFiles /Zi /nologo /W3 /WX- /Od /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_SQL_LIB /D QT_CORE_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Debug\moc_databasepath.cpp Debug\moc_editchilditem.cpp Debug\moc_editdate.cpp Debug\moc_log.cpp Debug\moc_money.cpp Debug\moc_mw.cpp databasepath.cpp editchilditem.cpp editdate.cpp log.cpp money.cpp mw.cpp -w34100 -w34189 -w44996 
+         D:\ProgramSetup\VS\VC\bin\CL.exe /c /I. /I..\..\..\programsetup\qtvs13\5.5\msvc2013\include /I..\..\..\programsetup\qtvs13\5.5\msvc2013\include\QtWidgets /I..\..\..\programsetup\qtvs13\5.5\msvc2013\include\QtGui /I..\..\..\programsetup\qtvs13\5.5\msvc2013\include\QtANGLE /I..\..\..\programsetup\qtvs13\5.5\msvc2013\include\QtSql /I..\..\..\programsetup\qtvs13\5.5\msvc2013\include\QtCore /Idebug /I. /I"..\..\..\programsetup\qtvs13\5.5\msvc2013\mkspecs\win32-msvc2013" /I.\GeneratedFiles /Zi /nologo /W3 /WX- /Od /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_SQL_LIB /D QT_CORE_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -w34100 -w34189 -w44996 Debug\moc_adduser.cpp Debug\moc_databasepath.cpp Debug\moc_editchilditem.cpp Debug\moc_editdate.cpp Debug\moc_log.cpp Debug\moc_money.cpp Debug\moc_mw.cpp mw.cpp
+         moc_adduser.cpp
          moc_databasepath.cpp
          moc_editchilditem.cpp
          moc_editdate.cpp
          moc_log.cpp
          moc_money.cpp
          moc_mw.cpp
-         databasepath.cpp
-         editchilditem.cpp
-         editdate.cpp
-         log.cpp
-         money.cpp
+     1>d:\_project_program\qt\moneyeatv02\debug\../mw.h(22): warning C4005: '_DEBUG' : macro redefinition
+                 command-line arguments :  see previous definition of '_DEBUG'
          mw.cpp
+     1>d:\_project_program\qt\moneyeatv02\mw.h(22): warning C4005: '_DEBUG' : macro redefinition
+                 command-line arguments :  see previous definition of '_DEBUG'
          Generating Code...
-         D:\ProgramSetup\VS10\VC\bin\CL.exe /c /I. /I..\..\..\programsetup\qtvs\5.5\msvc2010\include /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtWidgets /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtGui /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtANGLE /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtSql /I..\..\..\programsetup\qtvs\5.5\msvc2010\include\QtCore /Idebug /I. /I"..\..\..\programsetup\qtvs\5.5\msvc2010\mkspecs\win32-msvc2010" /I.\GeneratedFiles /Zi /nologo /W3 /WX- /Od /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_SQL_LIB /D QT_CORE_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GeneratedFiles\qrc_res.cpp -w34100 -w34189 -w44996 
-         qrc_res.cpp
-       ResourceCompile:
-         All outputs are up-to-date.
        Link:
-         D:\ProgramSetup\VS10\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"debug\\MoneyEatV02.exe" /NOLOGO /LIBPATH:D:\ProgramSetup\QtVs\5.5\msvc2010\lib /LIBPATH:D:/programsetup/qtvs/5.5/msvc2010/lib /LIBPATH:D:\ProgramSetup\QtVs\5.5\msvc2010\lib D:\ProgramSetup\QtVs\5.5\msvc2010\lib\qtmaind.lib shell32.lib D:/programsetup/qtvs/5.5/msvc2010/lib\Qt5Cored.lib D:\ProgramSetup\QtVs\5.5\msvc2010\lib\Qt5Widgetsd.lib D:\ProgramSetup\QtVs\5.5\msvc2010\lib\Qt5Guid.lib D:\ProgramSetup\QtVs\5.5\msvc2010\lib\Qt5Sqld.lib D:\ProgramSetup\QtVs\5.5\msvc2010\lib\Qt5Cored.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Win32\Debug\MoneyEatV02.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\_Project_Program\QT\MoneyEatV02\debug\MoneyEatV02.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X86 Win32\Debug\MoneyEatV02_resource.res
+         D:\ProgramSetup\VS\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"debug\\MoneyEatV02.exe" /NOLOGO /LIBPATH:D:\ProgramSetup\QtVs13\5.5\msvc2013\lib /LIBPATH:D:/programsetup/qtvs13/5.5/msvc2013/lib /LIBPATH:D:\ProgramSetup\QtVs13\5.5\msvc2013\lib D:\ProgramSetup\QtVs13\5.5\msvc2013\lib\qtmaind.lib shell32.lib D:/programsetup/qtvs13/5.5/msvc2013/lib\Qt5Cored.lib D:\ProgramSetup\QtVs13\5.5\msvc2013\lib\Qt5Widgetsd.lib D:\ProgramSetup\QtVs13\5.5\msvc2013\lib\Qt5Guid.lib D:\ProgramSetup\QtVs13\5.5\msvc2013\lib\Qt5Sqld.lib D:\ProgramSetup\QtVs13\5.5\msvc2013\lib\Qt5Cored.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"debug\MoneyEatV02.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X86 /SAFESEH "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" Win32\Debug\MoneyEatV02_resource.res
+         Win32\Debug\adduser.obj
          Win32\Debug\databasepath.obj
+         Win32\Debug\moc_adduser.obj
          Win32\Debug\moc_databasepath.obj
          Win32\Debug\moc_editchilditem.obj
          Win32\Debug\moc_editdate.obj
@@ -53,16 +47,10 @@
          Win32\Debug\log.obj
          Win32\Debug\main.obj
          Win32\Debug\money.obj
-         Win32\Debug\mw.obj "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" 
-         LINK : debug\\MoneyEatV02.exe not found or not built by the last incremental link; performing full link
+         Win32\Debug\mw.obj
          MoneyEatV02.vcxproj -> D:\_Project_Program\QT\MoneyEatV02\debug\MoneyEatV02.exe
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"debug\\MoneyEatV02.exe;#1" /manifest Win32\Debug\MoneyEatV02.exe.intermediate.manifest
-       FinalizeBuildStatus:
-         Deleting file "Win32\Debug\MoneyEatV02.unsuccessfulbuild".
-         Touching "Win32\Debug\MoneyEatV02.lastbuildstate".
-     1>Done Building Project "D:\_Project_Program\QT\MoneyEatV02\MoneyEatV02.vcxproj" (build target(s)).
+     1>Done Building Project "D:\_Project_Program\QT\MoneyEatV02\MoneyEatV02.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:23.43
+Time Elapsed 00:00:13.59

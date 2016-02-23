@@ -11,6 +11,7 @@ EditChildItem::EditChildItem(QWidget *parent) :
     this->setFixedSize(this->width(),this->height());
     this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui->spMoney->setSingleStep(1000);
+    this->isUpdate = false;
 }
 
 EditChildItem::~EditChildItem()
